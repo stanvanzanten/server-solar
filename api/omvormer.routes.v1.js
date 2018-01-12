@@ -23,6 +23,8 @@ routes.get('/omvormer/:id', function(req, res) {
     Omvormer.findById(req.params.id)
     .then((omvormer) => {
         // console.log(film);
+            res.contentType('application/json');
+            var id = req.params.id;
         res.status(200).json(omvormer);
     })
     .catch((error) => res.status(401).json(error));
@@ -30,13 +32,11 @@ routes.get('/omvormer/:id', function(req, res) {
 
     routes.put('/omvormer/:id', function(req, res) {
         
-            res.contentType('application/json');
-            var id = req.params.id;
         
             var update = { 
                 "name" : req.body.name, 
                 "description" : req.body.description,
-                "imagePath": req.body.imagePath
+                "hoeveelheid" : req.body.hoeveelheid
             };
             Omvormer.findById(id)
                 .then( omvormer => {
@@ -49,8 +49,8 @@ routes.get('/omvormer/:id', function(req, res) {
         });
 
         routes.post('/omvormer', function(req, res) {
-            var new_vormer = new Vormer(req.body);
-            new_vormer.save(function(err, task) {
+            var new_omvormer = new Omvormer(req.body);
+            new_omvormer.save(function(err, task) {
               if (err)
                 res.send(err);
                 res.json(task);
