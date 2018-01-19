@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const connection = require('../config/mongo.db');
 const Schema = mongoose.Schema;
 
-const OmvormerSchema = new Schema({
+const PositieSchema = new Schema({
+    id: String,
     name: String,
     description: String,
     hoeveelheid: Number
@@ -10,12 +11,12 @@ const OmvormerSchema = new Schema({
     //     ref: 'locatie'}]
 });
 
-const Omvormer = mongoose.model('omvormer', OmvormerSchema);
+const Positie = mongoose.model('positie', PositieSchema);
 
-const omvormer1 = new Omvormer({
-    name: 's Hertogdenbosch',
+const positie1 = new Positie({
+    name: 'omvormer 1 Oosterhout',
     description: 'Opbrengst in KW',
-    hoeveelheid: 225,
+    hoeveelheid: 340,
 })//.save();
 
-module.exports = Omvormer;
+module.exports = Positie;

@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 var routes = express.Router();
 var mongodb = require('../config/mongo.db');
@@ -12,7 +10,7 @@ routes.get('/omvormer', function(req, res) {
     res.contentType('application/json');
     Omvormer.find({})
         .then((omvormers) => {
-            // console.log(films);
+            // console.log(omvormers);
             res.status(200).json(omvormers);
         })
         .catch((error) => res.status(401).json(error));
@@ -22,7 +20,7 @@ routes.get('/omvormer/:id', function(req, res) {
     res.contentType('application/json');
     Omvormer.findById(req.params.id)
     .then((omvormer) => {
-        // console.log(film);
+        // console.log(omvormer);
             res.contentType('application/json');
             var id = req.params.id;
         res.status(200).json(omvormer);
@@ -32,6 +30,8 @@ routes.get('/omvormer/:id', function(req, res) {
 
     routes.put('/omvormer/:id', function(req, res) {
         
+        res.contentType('application/json');
+        var id = req.params.id;
         
             var update = { 
                 "name" : req.body.name, 

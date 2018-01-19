@@ -9,6 +9,7 @@ var mongodb = require('./config/mongo.db');
 var userroutes_v1 = require('./api/user.routes.v1');
 var omvormerroutes_v1 = require('./api/omvormer.routes.v1');
 var locatieroutes_v1 = require('./api/locatie.routes.v1');
+var positieroutes_v1 = require('./api/positie.routes.v1');
 // var auth_routes_v1 = require('./api/authentication.routes.v1');
 var config = require('./config/env/env');
 // var expressJWT = require('express-jwt');
@@ -73,6 +74,7 @@ app.use(function (req, res, next) {
 app.use('/api/v1', userroutes_v1);
 app.use('/api/v1', omvormerroutes_v1);
 app.use('/api/v1', locatieroutes_v1);
+app.use('/api/v1', positieroutes_v1);
 
 // Errorhandler voor express-jwt errors
 // Wordt uitgevoerd wanneer err != null; anders door naar next().
